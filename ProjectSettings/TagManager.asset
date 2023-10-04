@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Red
   - Blue
+  - ScoreManager
   layers:
   - Default
   - TransparentFX

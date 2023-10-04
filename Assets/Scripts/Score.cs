@@ -5,37 +5,29 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 
-public class Score : MonoBehaviour
+public class Bullet : MonoBehaviour
 {
-    private int count;
-    public TextMeshProUGUI countText;
+    private ScoreManager scoreManager;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        count = 0;
-        SetCountText();
+        scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();    // give the score manager empty gameobject that tag
     }
 
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Red"))
+        if (other.CompareTag("Red") == true)
         {
-            other.gameObject.SetActive(false);
-            count = count + 1;
-            SetCountText();
+            // update score
+            scoreManager.IncrementScore();
+            // handle target, in this example it's just destroyed
+            Destroy(other.gameObject);
         }
 
-        if (other.gameObject.CompareTag("Blue"))
+        if(other.CompareTag("Blue") == true)
         {
-            other.gameObject.SetActive(false);
-            count = count - 1;
-            SetCountText();
+            scoreManager.DecrementScore();
+            Destroy(other.gameObject);
         }
-    }
-
-    void SetCountText()
-    {
-        countText.text = "Count: " + count.ToString();
     }
 }
