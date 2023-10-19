@@ -4,25 +4,32 @@ using UnityEngine;
 
 public class EscapeUIToggle : MonoBehaviour
 {
-    public GameObject PauseMenu;
-    public GameObject Bullets;
-    public GameObject Player;
-    // Start is called before the first frame update
-    void Start()
-    {
-        PauseMenu.SetActive(false);
-    }
-
+    public Transform menu;
     // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        {            
-            Player.SetActive(false);
-            Bullets.SetActive(false);
-            PauseMenu.SetActive(true); 
-            Time.timeScale = 0f;
+        {
+            Pause();
         }
+    }
 
+    public void Pause()
+    {
+        if (menu.gameObject.activeInHierarchy == false)
+        {
+            menu.gameObject.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;
+        }
+        else
+        {
+            menu.gameObject.SetActive(false);
+            Time.timeScale = 1;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
     }
 }
