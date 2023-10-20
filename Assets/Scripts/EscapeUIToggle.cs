@@ -32,4 +32,12 @@ public class EscapeUIToggle : MonoBehaviour
             Cursor.visible = false;
         }
     }
+
+    public void OnButtonClick()
+    {
+        menu.gameObject.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
 }

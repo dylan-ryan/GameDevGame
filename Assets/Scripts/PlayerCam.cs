@@ -10,8 +10,8 @@ public class PlayerCam : MonoBehaviour
     public Transform menu;
     public GameObject GrappleGun;
 
-    public float sensX = 100f;
-    public float sensY = 100f;
+    public float sensX = 300f;
+    public float sensY = 300f;
 
     public Slider senseSlider;
 
@@ -23,8 +23,8 @@ public class PlayerCam : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sensX = PlayerPrefs.GetFloat("currentSensitivity", 100);
-        sensY = PlayerPrefs.GetFloat("currentSensitivity", 100);
+        sensX = PlayerPrefs.GetFloat("currentSensitivity", 300);
+        sensY = PlayerPrefs.GetFloat("currentSensitivity", 300);
         senseSlider.value = sensX / 10;
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
@@ -75,5 +75,12 @@ public class PlayerCam : MonoBehaviour
             Cursor.visible = false;
             GrappleGun.gameObject.SetActive(true);
         }
+    }
+
+    public void OnPlayerClickGun()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+        GrappleGun.gameObject.SetActive(true);
     }
 }

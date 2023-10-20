@@ -21,13 +21,13 @@ public class Bullet : MonoBehaviour
             // update score
             scoreManager.IncrementScore();
             // handle target, in this example it's just destroyed
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
 
         if(other.CompareTag("Blue") == true)
         {
             scoreManager.DecrementScore();
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 }
