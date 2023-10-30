@@ -8,6 +8,8 @@ TagManager:
   - Blue
   - ScoreManager
   - Targets
+  - StartTimer
+  - StopTimer
   layers:
   - Default
   - TransparentFX
