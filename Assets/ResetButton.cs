@@ -1,24 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class GrappleTimer : MonoBehaviour
+public class ResetButton : MonoBehaviour
 {
-
-    public Animation anim;
-    public Component grapplecd;
-
     // Start is called before the first frame update
     void Start()
     {
-        
         
     }
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<Grappling>().grapplingCd = 0;
-        if()
+        
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene("SampleScene");
     }
 }
