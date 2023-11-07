@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Grappling : MonoBehaviour
 {
@@ -21,6 +22,7 @@ public class Grappling : MonoBehaviour
     [Header("Cooldown")]
     public float grapplingCd;
     private float grapplingCdTimer;
+    public Animation grappleTimerText;
 
     [Header("Input")]
     public KeyCode grappleKey = KeyCode.Mouse1;
@@ -37,7 +39,10 @@ public class Grappling : MonoBehaviour
         if (Input.GetKeyDown(grappleKey)) StartGrapple();
 
         if (grapplingCdTimer > 0)
+        {
+            grappleTimerText.Play();
             grapplingCdTimer -= Time.deltaTime;
+        }
     }
 
     private void LateUpdate()
