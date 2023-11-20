@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.UIElements.Experimental;
 using TMPro;
 using Unity.VisualScripting;
+using UnityEngine.SceneManagement;
 
 public class TimeScore : MonoBehaviour
 {
@@ -34,7 +35,11 @@ public class TimeScore : MonoBehaviour
     // Update is called once per frame
     void OnTriggerStay(Collider other)
     {
-        
+        //if (other.CompareTag("Blue") == true)
+        //{
+        //    timerText.text = timerText.text + 1;
+        //    other.gameObject.SetActive(false);
+        //}
 
         if (other.gameObject.CompareTag("Player"))
         {
@@ -53,5 +58,13 @@ public class TimeScore : MonoBehaviour
             endTimeScore = timerSeconds;
             timerText.text = (endTimeScore).ToString("0");
         }
+    }
+
+    public void ShootBlue(int AddTime)
+    {
+        endTimeScore = endTimeScore + 1;
+        AddTime = endTimeScore;
+
+
     }
 }

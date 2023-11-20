@@ -10,6 +10,7 @@ TagManager:
   - Targets
   - StartTimer
   - StopTimer
+  - TimeScore
   layers:
   - Default
   - TransparentFX

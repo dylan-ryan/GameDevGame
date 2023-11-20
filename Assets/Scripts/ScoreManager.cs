@@ -15,9 +15,9 @@ public class ScoreManager : MonoBehaviour
         scoreText.text = score.ToString();
     }
 
-    public void DecrementScore()
-    {
-        score--;
-        scoreText.text = score.ToString();
-    }
+    //public void DecrementScore()
+    //{
+    //    score--;
+    //    scoreText.text = score.ToString();
+    //}
 }
