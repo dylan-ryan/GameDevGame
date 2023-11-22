@@ -6,6 +6,7 @@ using UnityEngine.UIElements.Experimental;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
+using System;
 
 public class TimeScore : MonoBehaviour
 {
@@ -60,11 +61,9 @@ public class TimeScore : MonoBehaviour
         }
     }
 
-    public void ShootBlue(int AddTime)
-    {
-        endTimeScore = endTimeScore + 1;
-        AddTime = endTimeScore;
-
-
-    }
+    //public void ShootBlue()
+    //{
+    //    timerSeconds += 1000;
+        
+    //}
 }
