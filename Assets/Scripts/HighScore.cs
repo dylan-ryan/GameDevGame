@@ -1,22 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.SocialPlatforms.Impl;
+using UnityEngine.UI;
 using TMPro;
 
-public class ScoreManager : MonoBehaviour
+public class HighScore : MonoBehaviour
 {
-    public TextMeshProUGUI scoreText;
-
-    public int score;
-
     private ScoreManager scoreManager;
-    public int highscore;
+    int score;
+    int highscore;
     public TextMeshProUGUI text;
-
-    public GameObject trigger;
     // Start is called before the first frame update
     void Start()
     {
+        scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();
+
+        score = scoreManager.score;
 
         highscore = PlayerPrefs.GetInt("highscore", highscore);
         text.text = highscore.ToString();
@@ -32,17 +33,5 @@ public class ScoreManager : MonoBehaviour
 
             PlayerPrefs.SetInt("highscore", highscore);
         }
-        
-    }
-    public void IncrementScore()
-    {
-        score++;
-        scoreText.text = score.ToString();
-    }
-
-    public void DecrementScore()
-    {
-        score--;
-        scoreText.text = score.ToString();
     }
 }

@@ -7,6 +7,8 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine.SceneManagement;
 using System;
+using static System.Net.Mime.MediaTypeNames;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class TimeScore : MonoBehaviour
 {
@@ -15,16 +17,28 @@ public class TimeScore : MonoBehaviour
     public TextMeshProUGUI timerText;
     public int endTimeScore;
     public TextMeshProUGUI fakeTimerText;
+
+    public int timehighscore;
+    public TextMeshProUGUI text;
+
     // Start is called before the first frame update
     void Start()
     {
         fakeTimerText.gameObject.SetActive(true);
         timerText.gameObject.SetActive(false);
+        timehighscore = PlayerPrefs.GetInt("", timehighscore);
+        text.text = timehighscore.ToString();
     }
 
     private void Update()
     {
-        
+        if (timerSeconds > timehighscore)
+        {
+            timehighscore = timerSeconds;
+            text.text = "" + timerSeconds;
+
+            PlayerPrefs.SetInt("highscore", timehighscore);
+        }
     }
 
     void Timer()
@@ -56,6 +70,13 @@ public class TimeScore : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
+            if (timerSeconds > timehighscore)
+            {
+                timehighscore = timerSeconds;
+                text.text = "" + timerSeconds;
+
+                PlayerPrefs.SetInt("highscore", timehighscore);
+            }
             endTimeScore = timerSeconds;
             timerText.text = (endTimeScore).ToString("0");
         }
