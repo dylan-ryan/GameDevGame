@@ -8,9 +8,11 @@ using TMPro;
 public class Bullet : MonoBehaviour
 {
     private ScoreManager scoreManager;
+    //private TimeScore timeScore;
 
     private void Start()
     {
+        //timeScore = GameObject.FindWithTag("TimeScore").GetComponent<TimeScore>();
         scoreManager = GameObject.FindWithTag("ScoreManager").GetComponent<ScoreManager>();    // give the score manager empty gameobject that tag
     }
 
@@ -24,10 +26,16 @@ public class Bullet : MonoBehaviour
             other.gameObject.SetActive(false);
         }
 
-        if(other.CompareTag("Blue") == true)
+        if (other.CompareTag("Blue") == true)
         {
             scoreManager.DecrementScore();
             other.gameObject.SetActive(false);
         }
+
+        //if (other.CompareTag("Blue") == true)
+        //{
+        //    timeScore.ShootBlue();
+        //    other.gameObject.SetActive(false);
+        //}
     }
 }
